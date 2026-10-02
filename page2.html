@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<style>
+*{box-sizing:border-box}
+/* html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#b14a4d} */
+
+
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-gradient(180deg,#f7d6dc 0%,#d99aa7 50%,#b14a4d 100%)}
+.page{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center}
+.scene{position:relative;width:min(100vw,calc(100vh * 1.776833));aspect-ratio:1672/941;background:url("page-2-clean2.png") center/contain no-repeat;overflow:visible}
+.yes{position:absolute;left:27.9%;top:79.8%;width:14.4%;height:8.4%;border:0;background:transparent;cursor:pointer;z-index:5;-webkit-tap-highlight-color:transparent}
+
+.no-button{
+    position:absolute;
+    left:46.1%;
+    top:80%;
+    width:15%;height:11.27%;border:0;padding:0;margin:0;background:url("No-button2.png") center/contain no-repeat;cursor:pointer;z-index:10;transition:left .18s ease,top .18s ease;-webkit-tap-highlight-color:transparent}
+
+
+#noButton { position: absolute;
+    filter:
+    drop-shadow(0 0 6px rgba(255, 80, 120, 0.7))
+    drop-shadow(0 0 18px rgba(255, 60, 110, 0.5));
+animation: noGlow 1.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes noGlow {
+    from {
+        filter: drop-shadow(0 0 6px rgba(255, 80, 120, 0.5));
+    }
+
+    to {
+        filter:
+            drop-shadow(0 0 12px rgba(255, 80, 120, 0.9))
+            drop-shadow(0 0 25px rgba(255, 50, 100, 0.6));
+    }
+}
+
+
+
+
+@media(max-width:600px){.scene{width:100vw}}
+
+
+
+
+</style>
+</head>
+<body>
+<main class="page">
+<div class="scene" aria-label="Birthday message">
+<a class="yes" href="yes.html" aria-label="Yes"></a>
+<button class="no-button" id="noButton" type="button" aria-label="No"></button>
+</div>
+</main>
+<script>
+const noButton=document.getElementById('noButton');
+const scene=document.querySelector('.scene');
+function moveNoButton(event){
+ if(event) event.preventDefault();
+ const r=scene.getBoundingClientRect(), b=noButton.getBoundingClientRect();
+ const px=r.width*.035, py=r.height*.035;
+ const maxLeft=r.width-b.width-px, maxTop=r.height-b.height-py;
+ const left=px+Math.random()*Math.max(0,maxLeft-px);
+ const top=py+Math.random()*Math.max(0,maxTop-py);
+ noButton.style.left=(left/r.width*100)+'%';
+ noButton.style.top=(top/r.height*100)+'%';
+}
+noButton.addEventListener('mouseenter',moveNoButton);
+noButton.addEventListener('touchstart',moveNoButton,{passive:false});
+noButton.addEventListener('click',moveNoButton);
+</script>
+</body>
+</html>

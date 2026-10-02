@@ -1,0 +1,1 @@
+Page flow: index.html -> Yes -> page2.html -> Yes -> yes.html (page 3 image). No buttons on pages 1 and 2 are separate moving elements and do not navigate.
